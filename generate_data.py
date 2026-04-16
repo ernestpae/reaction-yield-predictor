@@ -4,6 +4,8 @@ import numpy as np  # Math & random number generation
 # DAY 2
 from sklearn.model_selection import train_test_split # Tool to split data into "Study" and "Test" sets
 from sklearn.linear_model import LinearRegression    # The math model that finds a "Line of Best Fit"
+from sklearn.metrics import mean_absolute_error, r2_score # Tools to score the model
+import matplotlib.pyplot as plt # The standard library for creating graphs
                     # DAY 1
 # Create Features: The independent variables (Inputs)
 data = pd.DataFrame({
@@ -22,7 +24,7 @@ data["yield"] = (
 )
 
 # Preview and Export
-print(data.head()) # Show top 5 rows
+#print(data.head()) # Show top 5 rows
 data.to_csv("reaction_data.csv", index=False) # Save to file
 
 
@@ -49,3 +51,22 @@ model.fit(X_train, y_train)
 # --- 5. THE PREDICTION STEP (.predict) ---
 # We give the model "new" inputs (X_test) that it hasn't seen before to see what Yield % it predicts.
 predictions = model.predict(X_test)
+
+
+# Calculate Scores: Comparing 'Predictions' to the 'Real' test answers (y_test)
+mae = mean_absolute_error(y_test, predictions) # Finds the average 'miss'
+r2 = r2_score(y_test, predictions)             # Finds the 'reliability' (0 to 1)
+
+print(f"--- Model Performance ---")
+print(f"Mean Absolute Error: {mae:.2f}%") # If 4.09, model is off by ~4% on average
+print(f"R2 Score: {r2:.4f}")               # If 0.90, model explains 90% of the chemistry
+
+# Create Parity Plot: A visual 'Exam' result
+plt.scatter(y_test, predictions, alpha=0.5) # Plot dots for each reaction guess
+plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--') # Red dashed line = Perfection
+plt.xlabel("Actual Yield (%)")   # What happened in the 'lab'
+plt.ylabel("Predicted Yield (%)") # What the 'model' guessed
+plt.title("Model Accuracy: Predicted vs. Actual")
+plt.show() # Opens the window to see your graph
+
+
