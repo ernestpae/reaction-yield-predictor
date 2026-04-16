@@ -1,3 +1,25 @@
+"""
+PROJECT: REACTION YIELD PREDICTOR (V1.0)
+OBJECTIVE: Use Machine Learning to predict chemical yields based on reaction conditions.
+
+--- THE LAB ASSISTANT ANALOGY ---
+1. DATA (The Notebook): 
+   We simulate 100 'virtual' lab experiments. Each has a specific Temperature, 
+   Time, and Concentration. This is our raw research history.
+
+2. MODEL (The Assistant's Brain): 
+   We train a 'Linear Regression' model. Think of this as a junior lab assistant 
+   studying our notebook to find the mathematical 'secret formula' of the reaction.
+
+3. PREDICTIONS (The Final Exam): 
+   We hide 20 experiments from the assistant and ask them to 'guess' the yields.
+   By comparing their guesses to the real results, we calculate their 'Grade':
+   - MAE: How many percentage points the assistant is 'off' on average.
+   - R2 Score: How much of the chemistry's logic the assistant actually understood.
+
+GOAL: Build a tool that predicts outcomes of reactions we HAVEN'T run yet.
+"""
+
 # DAY 1
 import pandas as pd # Data management (The 'Excel' of Python)
 import numpy as np  # Math & random number generation
