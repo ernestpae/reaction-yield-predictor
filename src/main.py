@@ -50,9 +50,8 @@ data["yield"] = (
 )
 
 # Preview and Export
-#print(data.head()) # Show top 5 rows
-data.to_csv("reaction_data.csv", index=False) # Save to file
-
+print(data.head()) # Show top 5 rows
+data.to_csv("data/reaction_data.csv", index=False) # Save to file
 
              # DAY 2
 # --- 1. SEPARATING FEATURES AND TARGET ---
@@ -110,4 +109,12 @@ model_rf.fit(X_train, y_train)
 
 # Prediction: The forest predicts the yield for your test experiments.
 predictions_rf = model_rf.predict(X_test)
+
+mae_rf = mean_absolute_error(y_test, predictions_rf) 
+r2_rf = r2_score(y_test, predictions_rf)             
+
+print(f"--- Model Performance ---")
+print(f"Mean Absolute Error: {mae_rf:.2f}%") # If 4.09, model is off by ~4% on average
+print(f"R2 Score: {r2_rf:.4f}")               # If 0.90, model explains 90% of the chemistry
+
 
