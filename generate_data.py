@@ -28,7 +28,11 @@ from sklearn.model_selection import train_test_split # Tool to split data into "
 from sklearn.linear_model import LinearRegression    # The math model that finds a "Line of Best Fit"
 from sklearn.metrics import mean_absolute_error, r2_score # Tools to score the model
 import matplotlib.pyplot as plt # The standard library for creating graphs
+# DAY 3
+from sklearn.ensemble import RandomForestRegressor
                     # DAY 1
+# Ensures the "random" numbers are the same every time you run it
+np.random.seed(0)
 # Create Features: The independent variables (Inputs)
 data = pd.DataFrame({
     "temperature": np.random.uniform(20, 100, 100),    # Range: 20-100 C
@@ -58,9 +62,11 @@ X = data[["temperature", "time", "concentration"]]
 y = data["yield"]
 
 # --- 2. THE TRAIN-TEST SPLIT ---
-# test_size=0.2: Reserves 20% of your data for the final "Exam" (testing). 
-# The model "studies" with the other 80% (training).
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# test_size=0.2: Reserves 20% of the experiments for the final "Exam" (testing).
+# random_state=42: Locks the "shuffle" so the split is identical every time you run it.
+# This ensures your R2 score stays consistent, making your research reproducible.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#random_state=42
 
 # --- 3. INITIALIZING THE MODEL ---
 # Creates a blank Linear Regression object. Think of this as a student ready to learn.
@@ -91,4 +97,17 @@ plt.ylabel("Predicted Yield (%)") # What the 'model' guessed
 plt.title("Model Accuracy: Predicted vs. Actual")
 plt.show() # Opens the window to see your graph
 
+
+# --- DAY 3: RANDOM FOREST REGRESSOR ---
+# Instead of one 'line,' this model builds a 'forest' of 100 Decision Trees.
+# Each tree votes on the predicted yield, and the average becomes the final answer.
+# n_estimators=100: The number of individual 'trees' in the forest.
+# random_state=42: Ensures the 'forest' grows the same way every time you run it.
+model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
+
+# Training: The trees learn by asking "If/Then" questions about your data.
+model_rf.fit(X_train, y_train)
+
+# Prediction: The forest predicts the yield for your test experiments.
+predictions_rf = model_rf.predict(X_test)
 
