@@ -1,0 +1,303 @@
+{
+  "dataset_sha256": "efec1ac9f46c2401656ccac9c7593a83f8494cbef6914897b405036d1a07c9db",
+  "dataset_scope": "Condition-only regression; bundled data are synthetic",
+  "seed": 42,
+  "split": "high_temperature",
+  "train_rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    9,
+    11,
+    12,
+    14,
+    15,
+    16,
+    22,
+    24,
+    25,
+    26,
+    28,
+    29,
+    30,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    67,
+    69,
+    71,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    99
+  ],
+  "test_rows": [
+    7,
+    8,
+    10,
+    13,
+    17,
+    18,
+    19,
+    20,
+    21,
+    23,
+    27,
+    31,
+    38,
+    52,
+    66,
+    68,
+    70,
+    72,
+    89,
+    98
+  ],
+  "training_ranges": {
+    "temperature": [
+      20.375638095403765,
+      79.14108635186413
+    ],
+    "time": [
+      1.1666961501455255,
+      9.989623059110798
+    ],
+    "concentration": [
+      0.1119131719830095,
+      0.983646450836428
+    ]
+  },
+  "selected_model": "Ridge",
+  "selection_metric": "Five-fold training CV MAE; lowest mean wins",
+  "cv_candidates": [
+    {
+      "model": "DummyRegressor",
+      "parameters": {},
+      "cv_mae_mean": 12.388987430323349,
+      "cv_mae_std": 2.0859119442773677,
+      "fold_mae": [
+        11.782810230583515,
+        13.487432441580289,
+        15.732578387036973,
+        9.5642492942013,
+        11.37786679821467
+      ],
+      "selected": false
+    },
+    {
+      "model": "LinearRegression",
+      "parameters": {},
+      "cv_mae_mean": 3.5276365221842085,
+      "cv_mae_std": 0.49948252885736055,
+      "fold_mae": [
+        3.753498866283501,
+        3.410339198005439,
+        2.785140783553747,
+        4.308502475675868,
+        3.380701287402486
+      ],
+      "selected": false
+    },
+    {
+      "model": "Ridge",
+      "parameters": {
+        "model__alpha": 0.1
+      },
+      "cv_mae_mean": 3.5267106669168187,
+      "cv_mae_std": 0.4971880719833485,
+      "fold_mae": [
+        3.75221691532737,
+        3.4149604263333684,
+        2.7889435446844106,
+        4.304357420842964,
+        3.3730750273959798
+      ],
+      "selected": false
+    },
+    {
+      "model": "Ridge",
+      "parameters": {
+        "model__alpha": 1.0
+      },
+      "cv_mae_mean": 3.52372109329909,
+      "cv_mae_std": 0.48391294455894796,
+      "fold_mae": [
+        3.7407400534767605,
+        3.4559282215329263,
+        2.8223637249215314,
+        4.287043828501717,
+        3.3125296380625144
+      ],
+      "selected": true
+    },
+    {
+      "model": "Ridge",
+      "parameters": {
+        "model__alpha": 10.0
+      },
+      "cv_mae_mean": 3.8085626066014306,
+      "cv_mae_std": 0.47513816518614066,
+      "fold_mae": [
+        4.162189617776936,
+        3.982414138345339,
+        3.6554769354396424,
+        4.28468537292964,
+        2.9580469685155952
+      ],
+      "selected": false
+    },
+    {
+      "model": "RandomForestRegressor",
+      "parameters": {
+        "model__max_depth": 3,
+        "model__min_samples_leaf": 1
+      },
+      "cv_mae_mean": 6.0943957888497,
+      "cv_mae_std": 0.6726900717882962,
+      "fold_mae": [
+        7.021580981343683,
+        5.302948421877481,
+        6.159547796351107,
+        6.607169920051837,
+        5.380731824624391
+      ],
+      "selected": false
+    },
+    {
+      "model": "RandomForestRegressor",
+      "parameters": {
+        "model__max_depth": 3,
+        "model__min_samples_leaf": 3
+      },
+      "cv_mae_mean": 6.178341521851142,
+      "cv_mae_std": 0.70287561550727,
+      "fold_mae": [
+        7.259167635515986,
+        5.386366331982291,
+        6.5210674945548845,
+        6.285551350526912,
+        5.439554796675635
+      ],
+      "selected": false
+    },
+    {
+      "model": "RandomForestRegressor",
+      "parameters": {
+        "model__max_depth": null,
+        "model__min_samples_leaf": 1
+      },
+      "cv_mae_mean": 5.599712181234724,
+      "cv_mae_std": 0.40364775219104637,
+      "fold_mae": [
+        5.782377277929236,
+        5.059729005419999,
+        5.27468293445064,
+        6.215900592592888,
+        5.665871095780857
+      ],
+      "selected": false
+    },
+    {
+      "model": "RandomForestRegressor",
+      "parameters": {
+        "model__max_depth": null,
+        "model__min_samples_leaf": 3
+      },
+      "cv_mae_mean": 5.855720598623873,
+      "cv_mae_std": 0.5648789015430382,
+      "fold_mae": [
+        6.667500815200128,
+        5.144270381302808,
+        6.041781854226892,
+        6.133632777478004,
+        5.291417164911529
+      ],
+      "selected": false
+    }
+  ],
+  "holdout": {
+    "mae": 4.92436491967795,
+    "rmse": 5.858533791609945,
+    "r2": 0.7729375491259328
+  },
+  "baseline_holdout": {
+    "mae": 12.160510108225393,
+    "rmse": 14.671859126337026,
+    "r2": -0.4240909927830476
+  },
+  "permutation_importance": {
+    "temperature": {
+      "mae_increase_mean": 0.24225709082990793,
+      "shuffle_std": 0.2706209603182774
+    },
+    "time": {
+      "mae_increase_mean": 7.942454853409079,
+      "shuffle_std": 1.544251086149325
+    },
+    "concentration": {
+      "mae_increase_mean": 2.729621898063663,
+      "shuffle_std": 0.8944715245790317
+    }
+  },
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8",
+    "joblib": "1.5.3"
+  }
+}
